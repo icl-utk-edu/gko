@@ -1,0 +1,16 @@
+#! /bin/sh
+#
+# See https://stackoverflow.com/a/47886254 for dual purpose shell/Python files
+#
+""":"
+# search for a Python
+for cmd in python3 python python2; do
+    command -v > /dev/null $cmd && exec $cmd "$0" "$@"
+done
+echo No Python interpreter found
+":"""
+from __future__ import print_function  # might be needed for ealier Python's
+import sys
+from os.path import dirname, expanduser, realpath
+sys.path.insert(0, dirname(dirname(realpath(expanduser(__file__)))))
+import gko.py2or3
