@@ -87,12 +87,16 @@ def parse(argv):
 
     parsers = dict()
     for cmd, flgs, hlp in (
+         ("convert", "io", "Convert in/out files between origin and noermalized data spaces"),
          ("sample", "fgilnOo", "Sample the input space"),
          ):
         parsers[cmd] = command.add_parser(cmd, help=hlp)
         for f in flgs:
             parsers[cmd].add_argument(_CommonOpts[f]["lopt"],
                 **_CommonOpts[f]["kw"])
+
+    parsers["convert"].add_argument("-d", "--direction",
+        choices=("orig2norm", "norm2orig"))
 
     return main.parse_args(args=argv[1:])
 
