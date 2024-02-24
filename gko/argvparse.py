@@ -16,6 +16,13 @@ from .commands import dispatch
 
 
 _CommonOpts = {
+    "c": {
+        "lopt": "--candidates",
+        "kw": {
+            "help": "filename for the samples updated by the command'",
+            "type": argparse.FileType("r"),
+        },
+    },
     "f": {
         "lopt": "--fidelity",
         "kw": {
@@ -65,6 +72,27 @@ _CommonOpts = {
             "type": argparse.FileType("w"),
         },
     },
+    "P": {
+        "lopt": "--perf-candid",
+        "kw": {
+            "help": "filename for the performance candidates for the command'",
+            "type": argparse.FileType("r"),
+        },
+    },
+    "p": {
+        "lopt": "--perf",
+        "kw": {
+            "help": "filename for the performance values for the command'",
+            "type": argparse.FileType("r"),
+        },
+    },
+    "s": {
+        "lopt": "--samples",
+        "kw": {
+            "help": "filename for the samples updated by the command'",
+            "type": argparse.FileType("r"),
+        },
+    },
 }
 
 
@@ -88,6 +116,7 @@ def parse(argv):
     parsers = dict()
     for cmd, flgs, hlp in (
          ("convert", "io", "Convert in/out files between origin and noermalized data spaces"),
+         ("merge", "cflsPp", "Sample the input space"),
          ("sample", "fgilnOo", "Sample the input space"),
          ):
         parsers[cmd] = command.add_parser(cmd, help=hlp)
