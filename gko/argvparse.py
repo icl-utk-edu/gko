@@ -124,7 +124,7 @@ _CommonOpts = {
 }
 
 
-def parse(argv):
+def parse(argv: [str]):
     main = argparse.ArgumentParser(
         prog=argv[0],
         description="GKO or Generative Kernel Optimization",
@@ -143,9 +143,13 @@ def parse(argv):
 
     parsers = dict()
     for cmd, flgs, hlp in (
-         ("convert", "io", "Convert in/out files between origin and noermalized data spaces"),
-         ("merge", "cflsPp", "Sample the input space"),
-         ("sample", "fgilnOo", "Sample the input space"),
+         ("convert", "io", "convert in/out files between origin and noermalized data spaces"),
+         ("merge", "cflsPp", "sample the input space"),
+         ("model", "fgilOops", "model the input space with a learned model"),
+         ("plot", "cflMmops", "plot the samples and predictions"),
+         ("predict", "flmO4", "predict performance values in output space"),
+         ("search", "flMmSo", "search optimal values in the output space"),
+         ("sample", "fgilnOo", "sample the input space"),
          ):
         parsers[cmd] = command.add_parser(cmd, help=hlp)
         for f in flgs:
@@ -160,7 +164,7 @@ def parse(argv):
     return main.parse_args(args=argv[1:])
 
 
-def main(argv):
+def main(argv: [str]):
     args = parse(argv)
     if args.command is None:
         print("GKO or Generative Kernel Optimization.\n\n"
