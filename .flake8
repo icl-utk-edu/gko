@@ -1,8 +1,4 @@
 # -*- conf -*-
 # flake8 settings for GKO core files
 
-[flake8]
-# single line multi-import, line length
-ignore = E401,E501
-
-exclude = .git,__pycache__,etc,cache
+exclude = .git,__pycache__,etc,var
