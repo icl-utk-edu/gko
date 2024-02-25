@@ -9,5 +9,20 @@ GKO commands
 @author Piotr Luszczek
 """
 
-def dispatch(args):
-    pass
+
+import gko
+# these make command sub-modules available
+from .sample import sample as _
+
+
+def dispatch(args) -> int:
+    try:
+        cmd = getattr(getattr(gko, args.command), args.command)
+
+    except AttributeError:
+        print("Unknown command '{}'".format(args.command))
+        return 127
+
+    cmd(args)
+
+    return 0
