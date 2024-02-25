@@ -1,0 +1,1 @@
+{"model.threads": 6, "model.max_iters": 3000, "model.verbose": false, "model.linear": false, "model.nonlinear": true, "model.ARD": false, "model.restarts": 50, "model.type": ["GP", "GP", "GP"], "model.propagate_var": [true, true, true], "model.small_matrix_fidelity": true, "model.partial_facto_fidelity": true, "model.side_links": false}

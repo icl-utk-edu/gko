@@ -35,6 +35,7 @@ _CommonOpts = {
         "k": {
             "help": "fidelity to use for the command",
             "type": int,
+            "nargs": "+",
         },
     },
     "g": {

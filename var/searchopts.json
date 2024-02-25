@@ -1,0 +1,13 @@
+{
+    "search.minimize"  : false,
+    "search.threads"   : 40,
+    "search.algo"      : "cmaes",
+    "search.udi"       : "thread_island",
+    "search.bfe"       : "bfe",
+    "search.pop_size"  : 1000,
+    "search.gen"       : 100,
+    "search.evolve"    : 10,
+    "search.max_iters" : 10,
+    "search.batch"     : true
+}
+

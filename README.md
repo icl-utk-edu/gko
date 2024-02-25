@@ -33,8 +33,45 @@ The simple invocation of the main entry point into the GKO methods
 relies on the proper settings residing in the configuration files:
 
 ```sh
-python3 -m gko [options]
+python3 -m gko command [options]
 ```
+
+```sh
+python3 -m gko sample --level 5 --fidelity 0,12 --sample-count 25 --graph sample_graph.json --options sampleopts.json --infile old_samplesnorm.json --outfile new_samplesnorm.json
+```
+
+```sh
+python3 -m gko convert --direction norm2orig --infile samplesnorm.json --outfile samplesorig.json
+```
+
+```sh
+python3 -m gko model --samples samplesnorm.json --perf perf.json --options var/modopts.json --outfile model.pickle
+```
+
+```sh
+python3 -m gko model --level 0:3 --fidelity 0 --fidelity 1 --fidelity 2 --samples samplesnorm.json --perf perf.json --graph model_graph.json --options var/modopts.json --infile old_model.pickle --outfile new_model.pickle
+```
+
+```sh
+python3 -m gko model --samples samplesnorm.json --perf perfnorm.json --options var/modopts.json --outfile model.pickle
+```
+
+```sh
+python3 -m gko predict --level 2 --fidelity 1 --m model.pickle --options var/modopts.json --param1 384 --param2 4 --param3 6 --param4 1
+```
+
+```sh
+python3 -m gko search --level 2 --fidelity 0 --m model.pickle --model-opts var/modopts.json --search-opts searchopts.json --outfile candidnorm.json
+```
+
+```sh
+python3 -m gko plot --level 2 --fidelity 1 --model model.pickle --options var/modopts.json --samples samplesnorm.json --perf perf.json --candidates candidnorm.json --outfile <image_name_template>
+```
+
+```sh
+python3 -m gko merge --level 2 --fidelity 1 --samples samplesnorm.json --candidates candidnorm.json --perf perf.json --perf-candid <float,...>
+```
+
 
 ## Publications (Further Reading)
 
