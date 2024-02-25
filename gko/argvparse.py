@@ -16,79 +16,107 @@ from .commands import dispatch
 
 
 _CommonOpts = {
+    "1": {
+        "l": "--parameter",
+        "k": {
+            "help": "parameter number start at 1 that is predicted by the command'",
+            "choices": (1,),  # this will be replaced by arg parsing below
+        },
+    },
     "c": {
-        "lopt": "--candidates",
-        "kw": {
+        "l": "--candidates",
+        "k": {
             "help": "filename for the samples updated by the command'",
             "type": argparse.FileType("r"),
         },
     },
     "f": {
-        "lopt": "--fidelity",
-        "kw": {
+        "l": "--fidelity",
+        "k": {
             "help": "fidelity to use for the command",
             "type": int,
         },
     },
     "g": {
-        "lopt": "--graph",
-        "kw": {
+        "l": "--graph",
+        "k": {
             "help": "fidelity to use for the command",
             "type": argparse.FileType("r"),
         },
     },
     "i": {
-        "lopt": "--infile",
-        "kw": {
+        "l": "--infile",
+        "k": {
             "help": "filename for the command's input",
             "type": argparse.FileType("r"),
         },
     },
     "l": {
-        "lopt": "--level",
-        "kw": {
+        "l": "--level",
+        "k": {
             "help": "filename for the command's graph",
             "type": int,
         },
     },
+    "M": {
+        "l": "--model-opts",
+        "k": {
+            "help": "filename with the model options for the command",
+            "type": argparse.FileType("r"),
+        },
+    },
+    "m": {
+        "l": "--model",
+        "k": {
+            "help": "filename with the model for the command",
+            "type": argparse.FileType("r"),
+        },
+    },
     "n": {
-        "lopt": "--samples",
-        "kw": {
+        "l": "--sample-count",
+        "k": {
             "help": "number of samples",
             "type": int,
         },
     },
     "O": {
-        "lopt": "--options",
-        "kw": {
+        "l": "--options",
+        "k": {
             "help": "filename for the addition options for the command",
             "type": argparse.FileType("r"),
         },
     },
     "o": {
-        "lopt": "--outfile",
-        "kw": {
+        "l": "--outfile",
+        "k": {
             "help": "filename for the command's output",
             "type": argparse.FileType("w"),
         },
     },
     "P": {
-        "lopt": "--perf-candid",
-        "kw": {
+        "l": "--perf-candid",
+        "k": {
             "help": "filename for the performance candidates for the command'",
             "type": argparse.FileType("r"),
         },
     },
     "p": {
-        "lopt": "--perf",
-        "kw": {
+        "l": "--perf",
+        "k": {
             "help": "filename for the performance values for the command'",
             "type": argparse.FileType("r"),
         },
     },
+    "S": {
+        "l": "--search-opts",
+        "k": {
+            "help": "filename with the search options for the command",
+            "type": argparse.FileType("r"),
+        },
+    },
     "s": {
-        "lopt": "--samples",
-        "kw": {
+        "l": "--samples",
+        "k": {
             "help": "filename for the samples updated by the command'",
             "type": argparse.FileType("r"),
         },
@@ -121,8 +149,10 @@ def parse(argv):
          ):
         parsers[cmd] = command.add_parser(cmd, help=hlp)
         for f in flgs:
-            parsers[cmd].add_argument(_CommonOpts[f]["lopt"],
-                **_CommonOpts[f]["kw"])
+            v = _CommonOpts["1" if f.isdigit() else f]
+            if f.isdigit():
+                v["k"]["choices"] = list(range(int(f)))
+            parsers[cmd].add_argument(v["l"], **v["k"])
 
     parsers["convert"].add_argument("-d", "--direction",
         choices=("orig2norm", "norm2orig"))
