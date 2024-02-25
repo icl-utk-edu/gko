@@ -10,7 +10,7 @@ from .space import get_levels
 from .jsonutil import Encoder, encode
 
 
-def sample(args):
+def sample(args) -> None:
     print(args)
     levels = get_levels()
     lvl = args.level[0]

@@ -12,7 +12,8 @@ GKO commands
 
 import gko
 # these make command sub-modules available
-from .sample import sample as _
+from .sample import sample
+from .convert import convert
 
 
 def dispatch(args) -> int:
