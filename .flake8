@@ -1,4 +1,7 @@
 # -*- conf -*-
 # flake8 settings for GKO core files
-
+[flake8]
+max-line-length = 99
 exclude = .git,__pycache__,etc,var
+# ignore = E501
+# 501 line length
