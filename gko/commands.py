@@ -16,6 +16,7 @@ from .convert import convert
 from .merge import merge
 from .model import model
 from .predict import predict
+from .plot import plot
 from .sample import sample
 from .search import search
 
