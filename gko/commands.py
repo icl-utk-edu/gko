@@ -15,6 +15,7 @@ import gko
 from .convert import convert
 from .merge import merge
 from .model import model
+from .predict import predict
 from .sample import sample
 
 
