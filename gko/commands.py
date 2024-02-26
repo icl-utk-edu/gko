@@ -14,6 +14,7 @@ import gko
 # these make command sub-modules available
 from .convert import convert
 from .merge import merge
+from .model import model
 from .sample import sample
 
 

@@ -14,10 +14,10 @@ class Space(skopt.space.Space):
         return len(self.dims)
 
     def __getitem__(self, k):
-        if (isinstance(k, str)):
+        if isinstance(k, str):
             return super(Space, self)[k]
 
-        elif (isinstance(k, int)):
+        elif isinstance(k, int):
             return self.dims[k]
 
         else:
