@@ -37,7 +37,7 @@ class Space(skopt.space.Space):
 
 def factors(n):
     return skopt.space.Categorical(
-        ["{},{}".format(f, n/f) for f in range(1, n+1) if n % f == 0],
+        ["{},{}".format(f, n / f) for f in range(1, n + 1) if n % f == 0],
         transform="normalize", name="pq"
     )
 
@@ -47,5 +47,5 @@ def get_levels() -> list[Space]:
     cast = skopt.space.Categorical(["a1", "a2"], transform="normalize",
                                    name="cast")
     powers = [2**i for i in range(5)]
-    return [Space([blk, factors(powers[i]*6), cast])
+    return [Space([blk, factors(powers[i] * 6), cast])
             for i in range(len(powers))]

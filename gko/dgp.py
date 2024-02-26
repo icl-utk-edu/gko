@@ -111,7 +111,7 @@ class Layer(object):
         A = tensorflow.matrix_triangular_solve(Lm, Kmn, lower=True)
 
         # construct the conditional mean
-        mean = tensorflow.matmul(A, self.U, transpose_a=True) # N x R
+        mean = tensorflow.matmul(A, self.U, transpose_a=True)  # N x R
 
         # compute the covariance due to the conditioning
         var = Knn - tensorflow.reduce_sum(tensorflow.square(A), 0)

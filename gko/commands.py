@@ -17,6 +17,7 @@ from .merge import merge
 from .model import model
 from .predict import predict
 from .sample import sample
+from .search import search
 
 
 def dispatch(args) -> int:
