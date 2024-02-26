@@ -1,12 +1,7 @@
 GPy
-lhsmdu
 networkx
 matplotlib
-openturns
-pyDOE2
-pandas
 pygmo
 scikit_optimize
 scipy
 tensorflow
-wheel
